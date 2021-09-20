@@ -1,0 +1,38 @@
+<div class="wrap-task">
+	<h1>Todo App</h1>
+
+		<form [formGroup]="taskForm" (ngSubmit)="addTask()" class="data-forms">
+			<input type="text" class="infoText" formControlName="title" placeholder="Add your new todo">
+			<!-- <div >
+				<mat-form-field appearance="outline" class="data-input">
+					<mat-label>Choose a date</mat-label>
+					<input formControlName="date" matInput [matDatepicker]="picker" > 
+					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+				</mat-form-field>
+			</div> -->
+			<button class="border-button" type="submit">
+				<img  class="img-add" src="../assets/image/add_white_24dp.svg" alt="">
+			</button>
+		</form>
+	<div class="TodoTask">
+		<ng-container *ngFor="let task of tasks">
+			<div class="card">
+				<p class="card-title">
+					{{ task.title }}
+				</p>
+						<!-- <p>{{ taks.dueDate | date }}</p> -->
+					<p>{{  task.date | date: 'short' }}</p>
+				<button class="delete-button" (click)="deleteTask(task)">
+					<img  class="img-delete" src="../assets/image/delete_outline_white_24dp.svg" alt="">
+				</button>       
+			</div>
+		</ng-container>
+	</div>
+<div class="footer">
+	<p class="amount"> You have {{tasks.length}} pending tasks</p>
+	<button class="delete-all" type="submit" (click)="deleteAll()">
+			Clear All
+	</button>
+</div>
+</div>
