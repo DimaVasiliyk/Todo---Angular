@@ -3,14 +3,6 @@
 
 		<form [formGroup]="taskForm" (ngSubmit)="addTask()" class="data-forms">
 			<input type="text" class="infoText" formControlName="title" placeholder="Add your new todo">
-			<!-- <div >
-				<mat-form-field appearance="outline" class="data-input">
-					<mat-label>Choose a date</mat-label>
-					<input formControlName="date" matInput [matDatepicker]="picker" > 
-					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-					<mat-datepicker #picker></mat-datepicker>
-				</mat-form-field>
-			</div> -->
 			<button class="border-button" type="submit">
 				<img  class="img-add" src="../assets/image/add_white_24dp.svg" alt="">
 			</button>
@@ -21,7 +13,6 @@
 				<p class="card-title">
 					{{ task.title }}
 				</p>
-						<!-- <p>{{ taks.dueDate | date }}</p> -->
 					<p>{{  task.date | date: 'short' }}</p>
 				<button class="delete-button" (click)="deleteTask(task)">
 					<img  class="img-delete" src="../assets/image/delete_outline_white_24dp.svg" alt="">
