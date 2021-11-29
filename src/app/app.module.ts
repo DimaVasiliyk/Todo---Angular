@@ -9,11 +9,15 @@ import {MatInputModule} from '@angular/material/input';
 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { TaskService } from './task.service';
+import { OrdinalPipe } from './ordinal.pipe';
+import { TimingPipe } from './timing.pipe';
 // import { BackgroundComponent } from './background/background.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    OrdinalPipe,
+    TimingPipe,
     // BackgroundComponent
   ],
   imports: [

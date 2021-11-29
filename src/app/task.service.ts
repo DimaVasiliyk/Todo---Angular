@@ -1,5 +1,6 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Task } from "./task.interface"
+import { LocalStorageService } from "./local-storage.service"
 
 @Injectable({
     providedIn: 'root',
@@ -8,14 +9,22 @@ import { Task } from "./task.interface"
 export class TaskService{
     public tasks: Task[] = [];
 
+    public tasksEmiter = new EventEmitter<Task[]>()
+
+    constructor(public localStorageService: LocalStorageService){
+      this.tasks = this.localStorageService.getData();
+      this.tasksEmiter.subscribe(x => this.localStorageService.setData(x))
+    }
+
     getAll(): Task[] {
-        return this.tasks;
+      this.tasksEmiter.emit(this.tasks)
+      return this.tasks;
     }
 
     addTask(task: Task){
-            this.tasks.push(task);
+      this.tasks.push(task);
+      this.tasksEmiter.emit(this.tasks)
     }
-
 
     deleteTask(task: Task){
         
@@ -24,5 +33,14 @@ export class TaskService{
         if (indexOfTask !== -1) {
           this.tasks.splice(indexOfTask,1);
          }   
+         this.tasksEmiter.emit(this.tasks)
     }
+
+    deleteAllTasks(){
+        
+      this.tasks = [];
+      this.tasksEmiter.emit(this.tasks);
+  }
+
+
 }

@@ -8,12 +8,16 @@
 			</button>
 		</form>
 	<div class="TodoTask">
-		<ng-container *ngFor="let task of tasks">
+		<ng-container *ngFor="let task of tasks; let i = index">
 			<div class="card">
+				<p class="ordinal">
+					{{i + 1  | ordinal }}
+				</p>
 				<p class="card-title">
 					{{ task.title }}
 				</p>
-					<p>{{  task.date | date: 'short' }}</p>
+					<p class="data-time">{{task.date | date:'shortTime'}}</p>
+					<p class="data-time">{{task.date | timing}}</p>
 				<button class="delete-button" (click)="deleteTask(task)">
 					<img  class="img-delete" src="../assets/image/delete_outline_white_24dp.svg" alt="">
 				</button>       

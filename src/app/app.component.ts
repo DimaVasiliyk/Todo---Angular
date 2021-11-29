@@ -18,6 +18,7 @@ export class AppComponent implements OnInit{
   	});
 
 tasks: Task[] = [];
+// date: Date = new Date()
  
 constructor(public taskService: TaskService){}
 	
@@ -27,8 +28,7 @@ constructor(public taskService: TaskService){}
 			const task: Task = {
 				id: uuidv4(),
 				title: this.taskForm.value.title,
-				date: this.taskForm.value.date,
-				
+				date: new Date(),
 			};
 			this.taskService.addTask(task);
 			} else {
@@ -43,11 +43,20 @@ constructor(public taskService: TaskService){}
 	}
        
 	deleteAll(){
-		this.tasks.length = 0;
+		this.taskService.deleteAllTasks();
 	}
 
 	ngOnInit(): void {
 		this.tasks = this.taskService.getAll();
+		this.taskService.tasksEmiter.subscribe(t => {
+			this.tasks = t;
+		})
 	}
+
+	
+
+
+
+
 }
 
