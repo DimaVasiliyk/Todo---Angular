@@ -1,45 +1,47 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { Task } from "./task.interface"
 import { LocalStorageService } from "./local-storage.service"
+import { BehaviorSubject, Observable, Subject, Subscription } from "rxjs";
 
 @Injectable({
-    providedIn: 'root',
-  })
+  providedIn: 'root',
+})
 
-export class TaskService{
-    public tasks: Task[] = [];
+export class TaskService {
+  private taskSubject = new BehaviorSubject<Task[]>(this._getTasks());
 
-    public tasksEmiter = new EventEmitter<Task[]>()
+  constructor(public localStorageService: LocalStorageService) { }
 
-    constructor(public localStorageService: LocalStorageService){
-      this.tasks = this.localStorageService.getData();
-      this.tasksEmiter.subscribe(x => this.localStorageService.setData(x))
+
+  private _getTasks(): Task[] {
+    return this.localStorageService.getData() || [];
+  }
+
+
+ public  getAll(): Observable<Task[]> {
+    return this.taskSubject.asObservable();
+  };
+
+  public addTask(task: Task) {
+
+    const tasks = this.taskSubject.getValue()
+    this.taskSubject.next([task, ...tasks]);
+
+  }
+
+  public deleteTask(task: Task) {
+    const tasks = this.taskSubject.getValue();
+    const indexOfTask = tasks.findIndex((t: Task) => t.id === task.id);
+
+    if (indexOfTask !== -1) {
+      tasks.splice(indexOfTask, 1);
+
+      this.taskSubject.next([...tasks]);
     }
+  }
 
-    getAll(): Task[] {
-      this.tasksEmiter.emit(this.tasks)
-      return this.tasks;
-    }
-
-    addTask(task: Task){
-      this.tasks.push(task);
-      this.tasksEmiter.emit(this.tasks)
-    }
-
-    deleteTask(task: Task){
-        
-        const indexOfTask = this.tasks.findIndex((t: Task) => t.id === task.id);
-    
-        if (indexOfTask !== -1) {
-          this.tasks.splice(indexOfTask,1);
-         }   
-         this.tasksEmiter.emit(this.tasks)
-    }
-
-    deleteAllTasks(){
-        
-      this.tasks = [];
-      this.tasksEmiter.emit(this.tasks);
+  public deleteAllTasks() {
+    this.taskSubject.next([]);
   }
 
 

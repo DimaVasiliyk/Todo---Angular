@@ -8,7 +8,7 @@
 			</button>
 		</form>
 	<div class="TodoTask">
-		<ng-container *ngFor="let task of tasks; let i = index">
+		<ng-container *ngFor="let task of tasks$ | async; let i = index">
 			<div class="card">
 				<p class="ordinal">
 					{{i + 1  | ordinal }}
@@ -25,7 +25,7 @@
 		</ng-container>
 	</div>
 <div class="footer">
-	<p class="amount"> You have {{tasks.length}} pending tasks</p>
+	<p class="amount"> You have {{(tasks$ | async)?.length}} pending tasks</p>
 	<button class="delete-all" type="submit" (click)="deleteAll()">
 			Clear All
 	</button>

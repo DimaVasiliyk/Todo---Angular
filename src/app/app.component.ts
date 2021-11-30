@@ -3,8 +3,7 @@ import { Component, OnInit, } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TaskService, } from './task.service'
 import { Task } from "./task.interface"
-
-
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,13 +16,12 @@ export class AppComponent implements OnInit{
     date: new FormControl(''),
   	});
 
-tasks: Task[] = [];
+	tasks$!: Observable<Task[]>;
 // date: Date = new Date()
  
 constructor(public taskService: TaskService){}
 	
 	addTask(){
-
 		if (this.taskForm.valid) {
 			const task: Task = {
 				id: uuidv4(),
@@ -38,8 +36,6 @@ constructor(public taskService: TaskService){}
 
   	deleteTask(task: Task){
         this.taskService.deleteTask(task);
-
-	
 	}
        
 	deleteAll(){
@@ -47,16 +43,8 @@ constructor(public taskService: TaskService){}
 	}
 
 	ngOnInit(): void {
-		this.tasks = this.taskService.getAll();
-		this.taskService.tasksEmiter.subscribe(t => {
-			this.tasks = t;
-		})
+		this.tasks$ = this.taskService.getAll();
+
 	}
-
-	
-
-
-
-
 }
 
