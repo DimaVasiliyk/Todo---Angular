@@ -1,0 +1,33 @@
+<div class="wrap-task">
+	<h1>Todo App</h1>
+
+		<form [formGroup]="taskForm" (ngSubmit)="addTask()" class="data-forms">
+			<input type="text" class="infoText" formControlName="title" placeholder="Add your new todo">
+			<button class="border-button" type="submit">
+				<img  class="img-add" src="../assets/image/add_white_24dp.svg" alt="">
+			</button>
+		</form>
+	<div class="TodoTask">
+		<ng-container *ngFor="let task of tasks$ | async; let i = index">
+			<div class="card">
+				<p class="ordinal">
+					{{i + 1  | ordinal }}
+				</p>
+				<p class="card-title">
+					{{ task.title }}
+				</p>
+					<p class="data-time">{{task.date | date:'shortTime'}}</p>
+					<p class="data-time">{{task.date | timing}}</p>
+				<button class="delete-button" (click)="deleteTask(task)">
+					<img  class="img-delete" src="../assets/image/delete_outline_white_24dp.svg" alt="">
+				</button>       
+			</div>
+		</ng-container>
+	</div>
+<div class="footer">
+	<p class="amount"> You have {{(tasks$ | async)?.length}} pending tasks</p>
+	<button class="delete-all" type="submit" (click)="deleteAll()">
+			Clear All
+	</button>
+</div>
+</div>

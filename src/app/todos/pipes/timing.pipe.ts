@@ -10,12 +10,9 @@ export class TimingPipe implements PipeTransform {
 
     const currentDate =  new Date()
     const createDate = value
-    console.log(value);
-    console.log(currentDate);
     
-
     const diff = Math.abs(new Date(currentDate).getTime() - new Date(createDate).getTime());
-    console.log(diff);
+
     return moment.duration(diff, "ms").humanize();
   }
 

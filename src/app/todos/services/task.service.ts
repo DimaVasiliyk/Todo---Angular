@@ -1,7 +1,7 @@
-import { EventEmitter, Injectable } from "@angular/core";
-import { Task } from "./task.interface"
+import { Injectable } from "@angular/core";
+import { Task } from "../task.interface"
 import { LocalStorageService } from "./local-storage.service"
-import { BehaviorSubject, Observable, Subject, Subscription } from "rxjs";
+import { BehaviorSubject, Observable,} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -39,10 +39,8 @@ export class TaskService {
       this.taskSubject.next([...tasks]);
     }
   }
-
+  
   public deleteAllTasks() {
     this.taskSubject.next([]);
   }
-
-
 }
