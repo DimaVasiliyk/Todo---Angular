@@ -1,3 +1,5 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,10 +8,11 @@ import { AuthRoutingModule } from './auth.routing';
 
 @NgModule({
   imports: [
-    CommonModule,
+    // CommonModule,
     SharedModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+     
   ],
-  declarations: [AuthComponent],
+  declarations: [AuthComponent,LoginComponent],
 })
 export class AuthModule { }

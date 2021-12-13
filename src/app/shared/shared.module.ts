@@ -10,13 +10,14 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    // RouterModule
   ],
   declarations: [],
   exports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    // RouterModule
 
   ]
 })

@@ -1,0 +1,41 @@
+h1{
+    margin-top: 10px;
+}
+.auth-form{
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.auth-wrapp{
+    background-color: rgb(255, 255, 255); 
+    width: 330px;
+    height: 200px;
+    border-radius: 5px;
+}
+.input-email{
+    width: 250px;
+    margin-bottom: 10px;
+    height: 30px;
+    border-radius: 5px;
+    border-color: rgba(0, 0, 0, 0.171);
+}
+.input-pass{
+    width: 250px;
+    margin-bottom: 10px;
+    height: 30px;
+    border-radius: 5px;
+    border-color: rgba(0, 0, 0, 0.171);
+}
+.btn{
+    background-color: #497ce8;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+    width: 100px;
+    margin-bottom: 10px;
+    height: 25px;
+    border-color: rgba(0, 0, 0, 0.171);
+    color: oldlace;
+}

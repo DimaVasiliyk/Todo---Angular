@@ -6,6 +6,7 @@ import { Task } from "./task.interface"
 import { Observable } from 'rxjs';
 import { TimingPipe } from './pipes/timing.pipe';
 import { OrdinalPipe } from './pipes/ordinal.pipe';
+import { ApiService } from './services/api.service';
 
 @Component({
 	selector: 'todo',
@@ -22,9 +23,10 @@ export class TodosComponent implements OnInit {
 	});
 
 	tasks$!: Observable<Task[]>;
+
 	// date: Date = new Date()
 
-	constructor(public taskService: TaskService) { }
+	constructor(public taskService: TaskService, public apiService: ApiService) { }
 
 	public addTask() {
 		if (this.taskForm.valid) {
@@ -48,7 +50,10 @@ export class TodosComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.tasks$ = this.taskService.getAll();
+		// this.tasks$ = this.taskService.getAll();
+		this.tasks$ = this.apiService.getTodo()
+		console.log(this.tasks$);
+		
 
 	}
 }

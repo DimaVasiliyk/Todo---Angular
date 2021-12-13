@@ -1,3 +1,4 @@
+import { LoginComponent } from './auth/components/login/login.component';
 import { AuthComponent } from './auth/auth.component';
 import { TodosComponent } from './todos/todos.component';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,7 @@ const routes: Routes = [
       },
       {
         path:'auth',
-        component: AuthComponent
+        loadChildren: ()=> import('../app/auth/auth.module').then(m=> m.AuthModule)
       }
     ]
   }
