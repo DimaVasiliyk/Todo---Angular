@@ -1,8 +1,8 @@
 <div class="auth-wrapp">
-  <form  class="auth-form">
+  <form [formGroup]="form"  class="auth-form" (ngSubmit)="onSubmit()">
     <h1> Login </h1>
-    <input type="email" class="input-email" placeholder="Email" >
-    <input type="password" class="input-pass" placeholder="Password">
+    <input type="email" class="input-email" placeholder="Email" formControlName="email">
+    <input type="password" class="input-pass" placeholder="Password" formControlName="password">
     <input type="submit" class="btn">
   </form>
 </div>

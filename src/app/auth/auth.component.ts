@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SesionStorageService} from '../todos/services/session-storage.service';
 
 @Component({
   selector: 'app-auth',
@@ -7,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public storageService:SesionStorageService) { }
   ngOnInit(): void {
   }
 

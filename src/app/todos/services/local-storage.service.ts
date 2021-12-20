@@ -19,4 +19,6 @@ export class LocalStorageService {
  	 localStorage.setItem("data",JSON.stringify(data));
 	 }
 
+	//  public get
+
 }

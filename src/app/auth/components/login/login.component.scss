@@ -1,5 +1,5 @@
 h1{
-    margin-top: 10px;
+    margin-top: 15px;
 }
 .auth-form{
     display: flex;  
@@ -10,21 +10,21 @@ h1{
 }
 .auth-wrapp{
     background-color: rgb(255, 255, 255); 
-    width: 330px;
-    height: 200px;
+    width: 410px;
+    height: 230px;
     border-radius: 5px;
 }
 .input-email{
-    width: 250px;
+    width: 350px;
     margin-bottom: 10px;
-    height: 30px;
+    height: 40px;
     border-radius: 5px;
     border-color: rgba(0, 0, 0, 0.171);
 }
 .input-pass{
-    width: 250px;
+    width: 350px;
     margin-bottom: 10px;
-    height: 30px;
+    height: 40px;
     border-radius: 5px;
     border-color: rgba(0, 0, 0, 0.171);
 }
@@ -37,5 +37,5 @@ h1{
     margin-bottom: 10px;
     height: 25px;
     border-color: rgba(0, 0, 0, 0.171);
-    color: oldlace;
+    color: rgb(247, 247, 247);
 }
