@@ -28,14 +28,14 @@ export class TaskService {
   public addTask(task: Task) {
     const tasks = this.taskSubject.getValue()
     this.apiService.createTodo(task).subscribe(newTask => {
-      this.taskSubject.next([newTask, ...tasks]);
+      this.taskSubject.next([...(newTask.reverse())]);
     })
   }
 
   public deleteTask(task: Task) {
     const tasks = this.taskSubject.getValue();
     this.apiService.deleteTodo(task.id).subscribe(deletedTodo => {
-      const indexOfTask = tasks.findIndex((t: Task) => t.id === deletedTodo.id);
+      const indexOfTask = tasks.findIndex((t: Task) => t.id === task.id);
       if (indexOfTask !== -1) {
         tasks.splice(indexOfTask, 1);
         this.taskSubject.next([...tasks]);
@@ -45,11 +45,12 @@ export class TaskService {
 
   public deleteAllTasks() {
 this.apiService.deleteAllTodo().subscribe( ()  => {
-  
   this.taskSubject.next([]);})
     // this.taskSubject.value.forEach(data => {
-    //   this.apiService.deleteTodo(data.id).subscribe(() => { })
-    // })
+    //   this.apiService.deleteTodo(data.id).subscribe(() => {
+    //     this.taskSubject.next([]);
+    //   })
+//     })
     
   }
 }

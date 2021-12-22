@@ -39,6 +39,10 @@ export class TodosComponent implements OnInit {
 		}
 	}
 
+	doubleckick(){
+	  console.log(1);
+	}
+	
 	public deleteTask(task: Task) {
 		this.taskService.deleteTask(task);
 	}

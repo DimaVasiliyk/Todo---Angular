@@ -26,7 +26,7 @@ export class ApiService {
     return this.http.delete(`${this.api}/task/${id}`, { })
   }
   deleteAllTodo():Observable<any>{
-    return this.http.delete(`${this.api}`, { })
+    return this.http.delete(`${this.api}/task/deleteall`, { })
   }
 
   editTodo(id: any, data: any): Observable<any> {

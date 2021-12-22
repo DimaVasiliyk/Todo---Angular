@@ -9,7 +9,7 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const userToken = this.sesionStorageService.getToken()
         const modifiedReq= req.clone({
-        headers:req.headers.set('authorizatoin', `${userToken}`)
+        headers:req.headers.set('authorization', `${userToken}`)
     });
     return next.handle(modifiedReq);
   }

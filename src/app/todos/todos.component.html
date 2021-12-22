@@ -13,7 +13,7 @@
 				<p class="ordinal">
 					{{i + 1  | ordinal }}
 				</p>
-				<p class="card-title">
+				<p class="card-title"(ngSubmit)="doubleckick()" >
 					{{ task.title }}
 				</p>
 					<p class="data-time">{{task.date | date:'shortTime'}}</p>

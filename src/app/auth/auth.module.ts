@@ -8,7 +8,6 @@ import { AuthRoutingModule } from './auth.routing';
 
 @NgModule({
   imports: [
-    // CommonModule,
     SharedModule,
     AuthRoutingModule,
      
