@@ -5,9 +5,17 @@ body {
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
 // background: url(https://look.com.ua/pic/201806/1920x1080/look.com.ua-290575.jpg);
-    background: linear-gradient(to top, #497ce8 0%, #68eacc 100%);
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
+// .button-theme{
+//     width: 40px;
+//     height: 40px;
+//     border: none;
+//     background: url(/assets/image/bulb-white.png);
+//     background-size: contain;
+//     position: absolute;
+//     top: 40px; left: 40px;
+// }

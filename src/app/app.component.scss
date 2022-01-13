@@ -1,0 +1,27 @@
+@mixin themable ($theme-name, $body-bg,){
+    .#{$theme-name}{
+        .background{
+            background: $body-bg;
+            width: 2560px;
+            height: 1250px;
+            margin: 0; 
+            font-family: Roboto, "Helvetica Neue", sans-serif; 
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .button-theme{
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: url(/assets/image/bulb-white.png);
+            background-size: contain;
+            position: absolute;
+            top: 40px; left: 40px;
+        }
+    }
+}
+
+@include themable(light-theme, linear-gradient(to top, #497ce8 0%, #68eacc 100%));
+@include themable(dark-theme, #292929 );

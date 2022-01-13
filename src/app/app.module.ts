@@ -11,16 +11,17 @@ import { AuthGuard } from './auth.guard';
 import { TokenInterceptor } from './token.interceptor';
 
 // import { BackgroundComponent } from './background/background.component';
+
 const INTERCEPTOR_PROVIDER: Provider = {
   provide:HTTP_INTERCEPTORS,
   useClass: TokenInterceptor,
   multi: true
 }
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     // BackgroundComponent
-  ],
+   ],
   imports: [
     BrowserModule,
     SharedModule,
