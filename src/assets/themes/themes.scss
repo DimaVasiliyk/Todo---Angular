@@ -1,0 +1,42 @@
+$themes: (
+  light: (
+    background: linear-gradient(to top, #497ce8 0%, #68eacc 100%),
+    button-classic: #a406ff,
+    text:black,
+    field: rgb(243, 241, 244),
+    wrapper: white,
+    text-header: rgb(0, 0, 0),
+    border-button:white,
+  ),
+  dark: (
+    background: #1b1b1b,
+    button-classic: #90c4ad,
+    text: #524d42,
+    field: #c5c3c3,
+    wrapper: #9c9c9c,
+    text-header: #464646,
+    border-button: white,
+  ),
+);
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    ::ng-deep .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

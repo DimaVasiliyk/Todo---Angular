@@ -15,28 +15,30 @@ export class AppComponent {
 
 
     ngAfterViewInit() {
+
+
       let  themeSwitcherButton = this.elRef.nativeElement.querySelector('.button-theme');
+      console.log(themeSwitcherButton);
+      
       themeSwitcherButton.addEventListener('click',() => {
-      let background = this.elRef.nativeElement.querySelector('body');
-      background.classList.add('light-theme')
-      if (background.classList.contains('dark-theme')) {
-              background.classList.remove('dark-theme')
-              background.classList.add('light-theme')
+      let background = document.body;
+      background.classList.add('theme-light')
+      if (background.classList.contains('theme-dark')) {
+              background.classList.remove('theme-dark')
+              background.classList.add('theme-light')
               console.log(background,"one if");
               
             } else {
-              background.classList.add('dark-theme')
-              background.classList.remove('light-theme')
+              background.classList.add('theme-dark')
+              background.classList.remove('theme-light')
               console.log(background,"two if");
             }
           }
-        
       )
       }
-  
     ngAfterContentInit() {
-      let background = this.elRef.nativeElement.querySelector('body');
-      background.classList.add('light-theme')
+      let background = document.body;
+      background.classList.add('theme-light')
     }
   
 
@@ -51,12 +53,12 @@ export class AppComponent {
 //     this.themeSwitcherButton.addEventListener('click',() {
 //       const background = document.querySelector('background')
     
-//     if (background.classList.contains('dark-theme')) {
-//       background.classList.remove('dark-theme')
-//       background.classList.add('light-theme')
+//     if (background.classList.contains('theme-dark')) {
+//       background.classList.remove('theme-dark')
+//       background.classList.add('theme-light')
 //     } else {
-//       background.classList.add('dark-theme')
-//       background.classList.remove('light-theme')
+//       background.classList.add('theme-dark')
+//       background.classList.remove('theme-light')
 //     }
 //   })
   

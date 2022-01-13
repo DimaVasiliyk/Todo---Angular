@@ -1,6 +1,11 @@
-h1{
+@import "/src/assets/themes/themes.scss";
+
+.text-h1{
+  @include themify($themes){
+    color:  themed("text-header")
+} ;
     font-family: 'Poppins,', sans-serif;
-  font-weight: bold;
+    font-weight: bold;
     padding-left: 20px;
     padding-top: 35px;
     padding-bottom: 30px;
@@ -9,8 +14,11 @@ h1{
 
 
 .wrap-task{
-    background-color: rgb(255, 255, 255); 
-    width: 450px;
+  @include themify($themes){
+    background: themed("wrapper")
+} ;
+
+  width: 450px;
     height: 440px;
     border-radius: 5px;
     
@@ -64,14 +72,24 @@ outline: none;
     justify-content: space-between;
     height: 35px;
     max-width: 400px;
-    background-color: rgb(243, 241, 244);
-    margin-bottom: 10px;
+    @include themify($themes){
+      background: themed("field")
+  } ;    margin-bottom: 10px;
     border-radius: 2px;
     border-color: rgba(255, 255, 255, 0);
     margin:auto;
     margin-bottom: 10px;
     text-indent: 15px;
     
+    .ordinal,
+    .card-title,
+    .data-time{
+      @include themify($themes){
+        color: themed("text")
+    } ;
+    }
+
+
 }
 
 
@@ -120,7 +138,9 @@ outline: none;
 }
 
 .delete-all{
-  background: rgb(142, 74, 230);
+  @include themify($themes){
+    background: themed("button-classic")
+} ;
   width: 70px;
   height: 25px;
   border: rgba(0, 0, 0, 0);;
@@ -176,9 +196,13 @@ outline: none;
     width: 50px;
     height: 50px;
     position: relative;
-    color: rgb(164, 6, 255);
+    @include themify($themes){
+      background: themed("button-classic");
+      border:  themed("button-classic")
+      
+  } ;
+
     border: 1px solid rgb(255, 255, 255);
-    background: rgb(142, 74, 230);
     background-image: url(https://e7.pngegg.com/pngimages/904/382/png-clipart-computer-icons-arithmetic-purple-heroes.png) none;
     font-weight: 300;
     font-family: 'Montserrat', sans-serif;
